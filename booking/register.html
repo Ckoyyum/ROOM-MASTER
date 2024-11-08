@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <!-- Link to FontAwesome for the profile icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: url('mjiitbackground.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+        }
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.7); 
+            color: rgb(114, 4, 4);
+            padding: 15px;
+            justify-content: space-between; 
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10; /* Keeps the navbar on top */
+        }
+        .navbar-title img {
+            height: auto;         
+            max-height: 40px;      
+            width: auto;           
+            margin-right: 10px;    
+        }
+
+        .navbar-title {
+            display: flex;
+            align-items: center;   
+        }
+
+        .navbar-links {
+            display: flex;
+            margin-left: 30px; /* Adds space between the title and the links */
+        }
+
+        .navbar-links a {
+            color: rgb(119, 4, 4);
+            text-decoration: none;
+            margin-right: 30px;
+            font-size: 16px;
+        }
+        .navbar-links a:hover {
+            color: #ddd;
+        }
+
+        .navbar-profile {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-profile i {
+            font-size: 30px; /* FontAwesome icon size */
+            color: rgb(119, 4, 4);
+        }
+
+        /* Register form styling */
+        .register-container {
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 1%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            margin: 200px auto 0; /* Centers the container with space below navbar */
+        }
+        .register-container h2 {
+            color: #333;
+            margin-bottom: 1em;
+        }
+
+        .form-field {
+            margin-bottom: 1em;
+        }
+        .form-field label {
+            display: block;
+            text-align: left;
+            color: #555;
+            margin-bottom: 0.5em;
+        }
+        .form-field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .form-field input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .register-btn {
+            background-color: #800000;
+            color: rgb(25, 24, 24);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1em;
+        }
+        .register-btn:hover {
+            background-color: #45a049;
+        }
+        .login-link {
+            display: block;
+            margin-top: 1em;
+            color: #800000;
+            text-decoration: none;
+        }
+        .login-link:hover {
+            color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-title">
+            <!-- Logos beside the title -->
+            <img src="UTM-LOGO-FULL.png" alt="Logo 1">
+            <img src="Mjiit RoomMaster logo.png" alt="Logo 2">
+            <p>ROOMMASTER</p>
+        </div>
+        <div class="navbar-links">
+            <a href="#">Home</a>
+            <a href="#">My Booking</a>
+            <a href="#">Rooms</a>
+        </div>
+        <div class="navbar-profile">
+            <i class="fa-regular fa-user"></i> <!-- Profile icon -->
+        </div>
+    </div>
+
+    <!-- Register Container -->
+    <div class="register-container">
+        <h2>Create an Account</h2>
+        <form id="registerForm">
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-field">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+
+            <!-- Terms and conditions checkbox -->
+            <div class="form-field">
+                <label>
+                    <input type="checkbox" id="terms">
+                    I agree to the Terms and Conditions
+                </label>
+            </div>
+
+            <button type="submit" class="register-btn">Register</button>
+
+            <!-- Login Link -->
+            <a href="login.html" class="login-link">Already have an account? Login</a>
+        </form>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const terms = document.getElementById('terms').checked;
+
+            // Basic validation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            if (!terms) {
+                alert("You must agree to the terms and conditions.");
+                return;
+            }
+
+            // If valid, simulate registration success and redirect to login page
+            alert("Registration successful! Please log in.");
+            window.location.href = "login.html";  // Redirect to the login page
+        });
+    </script>
+
+</body>
+</html>

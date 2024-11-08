@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Link to FontAwesome for the profile icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: url('mjiitbackground.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+        }
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.7); 
+            color: rgb(114, 4, 4);
+            padding: 15px;
+            justify-content: space-between; 
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10; /* Keeps the navbar on top */
+        }
+        .navbar-title img {
+            height: auto;         
+            max-height: 40px;      
+            width: auto;           
+            margin-right: 10px;    
+        }
+
+        .navbar-title {
+            display: flex;
+            align-items: center;   
+        }
+
+        .navbar-links {
+            display: flex;
+            margin-left: 30px; /* Adds space between the title and the links */
+        }
+
+        .navbar-links a {
+            color: rgb(119, 4, 4);
+            text-decoration: none;
+            margin-right: 30px;
+            font-size: 16px;
+        }
+        .navbar-links a:hover {
+            color: #ddd;
+        }
+
+        .navbar-profile {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-profile i {
+            font-size: 30px; /* FontAwesome icon size */
+            color: rgb(119, 4, 4);
+        }
+
+        /* Login form styling */
+        .login-container {
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 1%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            margin: 600px auto 0; /* Centers the container with space below navbar */
+        }
+        .login-container h2 {
+            color: #333;
+            margin-bottom: 1em;
+        }
+
+        .form-field {
+            margin-bottom: 1em;
+        }
+        .form-field label {
+            display: block;
+            text-align: left;
+            color: #555;
+            margin-bottom: 0.5em;
+        }
+        .form-field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .form-field input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .login-btn {
+            background-color: #800000;
+            color: rgb(25, 24, 24);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1em;
+        }
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+        .forgot-password {
+            display: block;
+            margin-top: 1em;
+            color: #800000;
+            text-decoration: none;
+        }
+        .forgot-password:hover {
+            color: #45a049;
+        }
+
+        /* Success Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup button {
+            background-color: #5f2a1e;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #9c3d29;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-title">
+            <!-- Logos beside the title -->
+            <img src="UTM-LOGO-FULL.png" alt="Logo 1">
+            <img src="Mjiit RoomMaster logo.png" alt="Logo 2">
+            <p>ROOMMASTER</p>
+        </div>
+        <div class="navbar-links">
+            <a href="#">Home</a>
+            <a href="#">My Booking</a>
+            <a href="#">Rooms</a>
+        </div>
+        <div class="navbar-profile">
+            <i class="fa-regular fa-user"></i> <!-- Profile icon -->
+        </div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <!-- Keep me signed in checkbox -->
+            <div class="form-field">
+                <label>
+                    <input type="checkbox" id="keep-signed-in">
+                    Keep me signed in
+                </label>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+
+            <!-- Forgot Password Link -->
+            <a href="#" class="forgot-password">Forgot Password?</a>
+        </form>
+    </div>
+
+    <!-- Success Popup -->
+    <div class="popup" id="successPopup">
+        <h3>Login Successful!</h3>
+        <p>Welcome back, you have successfully logged in.</p>
+        <button id="closePopup">Go to Room List</button>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Simulate successful login and show success popup
+            document.getElementById('successPopup').classList.add('active');
+        });
+
+        // Close popup and redirect after success
+        document.getElementById('closePopup').addEventListener('click', function() {
+            // Close the popup
+            document.getElementById('successPopup').classList.remove('active');
+
+            // Redirect to room list page
+            window.location.href = "roommaster.html";  // Redirect to the Room List page
+        });
+    </script>
+
+</body>
+</html>

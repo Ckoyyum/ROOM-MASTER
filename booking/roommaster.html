@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to RoomMaster</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('mjiitbackground.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.7); 
+            color: rgb(114, 4, 4);
+            padding: 15px;
+            justify-content: space-between; 
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar-title img {
+            height: auto;         
+            max-height: 40px;      
+            width: auto;           
+            margin-right: 10px;    
+        }
+
+        .navbar-title {
+            display: flex;
+            align-items: center;   
+        }
+
+        .navbar-title p {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .navbar-links {
+            display: flex;
+            margin-left: 30px;
+        }
+
+        .navbar-links a {
+            color: rgb(119, 4, 4);
+            text-decoration: none;
+            margin-right: 30px;
+            font-size: 16px;
+        }
+
+        .navbar-links a:hover {
+            color: #ddd;
+        }
+
+        .navbar-profile {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-profile i {
+            font-size: 30px;
+            color: rgb(119, 4, 4);
+        }
+
+        /* Welcome Page styling */
+        .welcome-container {
+            margin-top: 100px; /* Space below navbar */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .welcome-text-container {
+            background-color: #800000; /* Marron background */
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 60%;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+
+        .welcome-container h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .welcome-container p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* Search Bar */
+        .search-bar-container {
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            width: 60%;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 8px;
+            border: 2px solid #5f2a1e;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Room Grid */
+        .rooms-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Individual Room Styling */
+        .room {
+            background-color: white; /* White background */
+            color: black; /* Black text color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Align text to the left */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease; /* Smooth transition for hover */
+        }
+
+        .room:hover {
+            transform: translateY(-5px); /* Pop-up effect on hover */
+        }
+
+        .room img {
+            width: 40%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .room-details {
+            width: 55%;
+        }
+
+        .room-details h3 {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: rgb(114, 4, 4);
+        }
+
+        .room-details p {
+            font-size: 1.1em;
+        }
+
+        /* Availability status */
+        .room-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .available {
+            background-color: green;
+        }
+
+        .not-available {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-title">
+            <img src="Mjiit RoomMaster logo.png" alt="Logo 1">
+            <img src="UTM-LOGO-FULL.png" alt="Logo 2">
+            <p>ROOMMASTER</p>
+        </div>
+        <div class="navbar-links">
+            <a href="#">Home</a>
+            <a href="#">My Booking</a>
+            <a href="#">Rooms</a>
+        </div>
+        <div class="navbar-profile">
+            <i class="fa-regular fa-user"></i>
+        </div>
+    </div>
+
+    <!-- Welcome Page -->
+    <div class="welcome-container">
+        <!-- Welcome Text Container -->
+        <div class="welcome-text-container">
+            <h1>Welcome to RoomMaster</h1>
+            <p>Explore our available rooms below</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar-container">
+            <input type="text" class="search-bar" placeholder="Search for a room...">
+        </div>
+
+        <div class="rooms-container">
+            <!-- Room 1 -->
+            <a href="booking.html?room=Room%201&capacity=20&equipment=Projector,Whiteboard,WiFi&image=japanroom.png">
+                <div class="room">
+                    <div class="room-details">
+                        <h3>Room Name 1</h3>
+                        <p>Capacity: 20 People</p>
+                        <p>Equipment: Projector, Whiteboard, WiFi</p>
+                    </div>
+                    <img src="japanroom.png" alt="Room 1">
+                    <div class="room-status available"></div>
+                </div>
+            </a>
+
+            <!-- Room 2 -->
+            <a href="booking.html?room=Room%202&capacity=15&equipment=TV,Whiteboard,WiFi&image=meetingroom.png">
+                <div class="room">
+                    <div class="room-details">
+                        <h3>Room Name 2</h3>
+                        <p>Capacity: 15 People</p>
+                        <p>Equipment: TV, Whiteboard, WiFi</p>
+                    </div>
+                    <img src="meetingroom.png" alt="Room 2">
+                    <div class="room-status not-available"></div>
+                </div>
+            </a>
+
+            <!-- Room 3 -->
+            <a href="booking.html?room=Room%203&capacity=30&equipment=Projector,Speakers,WiFi&image=seminarroom.png">
+                <div class="room">
+                    <div class="room-details">
+                        <h3>Room Name 3</h3>
+                        <p>Capacity: 30 People</p>
+                        <p>Equipment: Projector, Speakers, WiFi</p>
+                    </div>
+                    <img src="seminarroom.png" alt="Room 3">
+                    <div class="room-status available"></div>
+                </div>
+            </a>
+
+            <!-- Room 4 -->
+            <a href="booking.html?room=Room%204&capacity=10&equipment=Whiteboard,WiFi&image=bk8.png">
+                <div class="room">
+                    <div class="room-details">
+                        <h3>Room Name 4</h3>
+                        <p>Capacity: 10 People</p>
+                        <p>Equipment: Whiteboard, WiFi</p>
+                    </div>
+                    <img src="bk8.png" alt="Room 4">
+                    <div class="room-status not-available"></div>
+                </div>
+            </a>
+
+            <!-- Room 5 -->
+            <a href="booking.html?room=Room%205&capacity=50&equipment=Projector,Microphone,WiFi&image=bk20.png">
+                <div class="room">
+                    <div class="room-details">
+                        <h3>Room Name 5</h3>
+                        <p>Capacity: 50 People</p>
+                        <p>Equipment: Projector, Microphone, WiFi</p>
+                    </div>
+                    <img src="bk20.png" alt="Room 5">
+                    <div class="room-status available"></div>
+                </div>
+            </a>
+
+            <!-- Room 6 -->
+            <a href="booking.html?room=Room%206&capacity=40&equipment=TV,Whiteboard,WiFi&image=bk50.png">
+                <div class="room">
+                    <div class="room-details">
+                        <h3>Room Name 6</h3>
+                        <p>Capacity: 40 People</p>
+                        <p>Equipment: TV, Whiteboard, WiFi</p>
+                    </div>
+                    <img src="bk2.png" alt="Room 6">
+                    <div class="room-status available"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
